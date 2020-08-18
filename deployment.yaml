@@ -6,7 +6,7 @@ spec:
   replicas: 2 
   selector:
    matchLabels:
-    app: mytomcatpod
+    app: mytomcatpod 
   template:
     metadata: 
       labels:
@@ -24,11 +24,12 @@ metadata:
   name: mytomcatpod-svc 
   labels:
     app: mytomcatpod 
- spec:
+spec:
   type: LoadBalancer 
   ports:
   - protocol: TCP 
     port: 80
     targetPort: 8080 
   selector:
-    app: mytomcatapp
+    app: mytomcatpod
+
