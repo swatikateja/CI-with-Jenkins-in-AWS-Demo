@@ -2,22 +2,22 @@ apiVersion: apps/v1
 kind: Deployment 
 metadata:
   name: mydockerapp 
-  name: mytomcatpod 
+  name: mytestapp 
 spec:
   replicas: 2 
   selector:
    matchLabels:
     app: mydockerapp 
-    app: mytomcatpod 
+    app: mytestapp 
   template:
     metadata: 
       labels:
         app: mydockerapp
-        app: mytomcatpod
+        app: mytestapp
     spec:
       containers:
       - name: mydockerapp
-      - name: mytomcatpod
+      - name: mytestapp
         image: swatikateja/sprint6dockerjenkins:tagversion 
         ports:
         - containerPort: 8080
@@ -26,10 +26,10 @@ apiVersion: v1
 kind: Service 
 metadata:
   name: mydockerapp-svc 
-  name: mytomcatpod-svc 
+  name: mytestapp-svc 
   labels:
     app: mydockerapp 
-    app: mytomcatpod 
+    app: mytestapp 
 spec:
   type: LoadBalancer 
   ports:
@@ -38,4 +38,4 @@ spec:
     targetPort: 8080 
   selector:
     app: mydockerapp
-    app: mytomcatpod
+    app: mytestapp
